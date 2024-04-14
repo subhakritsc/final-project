@@ -4,8 +4,9 @@ class Scene2 extends Phaser.Scene {
     }
 
     preload() {
-        this.load.image('wallpaper', 'wallpaper1.jpg');
+        this.load.image('wallpaper', 'wallpaper2.jpg');
         this.load.image('card','card.png')
+        this.load.image('card2','card2.png')
         this.load.script('webfont', 'https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js');
     }
 
@@ -18,42 +19,10 @@ class Scene2 extends Phaser.Scene {
                 const self = this;
 
                 const buttonWidth = 170;
-                const buttonHeight = 75;
+                const buttonHeight = 50;
                 const middleX = 400;
                 const buttonX = 650;
                 const buttonY = 500;
-        
-                const heading = this.add.text(100, 100, 'Choose the card', { fontFamily: '"Press Start 2P"', fontSize: '40px', fill: '#fff' });
-                const headingWidht = heading.width;
-                heading.setX(middleX - headingWidht/2);
-
-                const card1 = this.add.image(175,300,'card').setScale(0.3)
-                .setInteractive()
-                .on('pointerup', () => {
-                    console.log('Card1 clicked!')
-                    self.scene.start('Scene3')
-                });
-
-                const card2 = this.add.image(325,300,'card').setScale(0.3)
-                .setInteractive()
-                .on('pointerup', () => {
-                    console.log('Card2 clicked!')
-                    self.scene.start('Scene3')
-                });
-
-                const card3 = this.add.image(475,300,'card').setScale(0.3)
-                .setInteractive()
-                .on('pointerup', () => {
-                    console.log('Card3 clicked!')
-                    self.scene.start('Scene3')
-                });
-
-                const card4 = this.add.image(625,300,'card').setScale(0.3)
-                .setInteractive()
-                .on('pointerup', () => {
-                    console.log('Card4 clicked!')
-                    self.scene.start('Scene3')
-                });
 
                 this.add.rectangle(buttonX, buttonY, buttonWidth, buttonHeight, 0xffffff)
                 .setInteractive()
@@ -68,7 +37,38 @@ class Scene2 extends Phaser.Scene {
                 const textHeight = buttonText.height;
                 buttonText.setX(buttonX - textWidth / 2);
                 buttonText.setY(buttonY - textHeight / 2);
+        
+                const heading = this.add.text(100, 100, 'Choose the card', { fontFamily: '"Press Start 2P"', fontSize: '40px', fill: '#fff' });
+                const headingWidht = heading.width;
+                heading.setX(middleX - headingWidht/2);
 
+                const card1 = this.add.image(175,300,'card').setScale(0.3)
+                .setInteractive()
+                .on('pointerup', () => {
+                    console.log('Card1 clicked!')
+                    self.scene.start('Scene3')
+                });
+
+                const card2 = this.add.image(325,300,'card2').setScale(0.3)
+                .setInteractive()
+                .on('pointerup', () => {
+                    console.log('Card2 clicked!')
+                    self.scene.start('Scene3')
+                });
+
+                const card3 = this.add.image(475,300,'card').setScale(0.3)
+                .setInteractive()
+                .on('pointerup', () => {
+                    console.log('Card3 clicked!')
+                    self.scene.start('Scene3')
+                });
+
+                const card4 = this.add.image(625,300,'card2').setScale(0.3)
+                .setInteractive()
+                .on('pointerup', () => {
+                    console.log('Card4 clicked!')
+                    self.scene.start('Scene3')
+                });
             },
 
             inactive: () => {

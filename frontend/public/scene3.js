@@ -10,7 +10,7 @@ class Scene3 extends Phaser.Scene {
     }
 
     preload() {
-        this.load.image('wallpaper', 'wallpaper1.jpg');
+        this.load.image('wallpaper', 'wallpaper2.jpg');
         this.load.script('webfont', 'https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js');
 
     }
@@ -35,7 +35,7 @@ class Scene3 extends Phaser.Scene {
                 console.log("id is "+id)
 
                 const buttonWidth = 170;
-                const buttonHeight = 75;
+                const buttonHeight = 50;
                 const middleX = 400;
                 const buttonX = 650;
                 const buttonY = 500;

@@ -4,7 +4,7 @@ class Scene1 extends Phaser.Scene {
     }
 
     preload() {
-        this.load.image('wallpaper', 'wallpaper1.jpg');
+        this.load.image('wallpaper', 'wallpaper2.jpg');
         this.load.script('webfont', 'https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js');
     }
 
@@ -17,11 +17,11 @@ class Scene1 extends Phaser.Scene {
                 const self = this;
 
                 const buttonWidth = 200;
-                const buttonHeight = 100;
+                const buttonHeight = 70;
                 const buttonX = 400;
-                const buttonY = 400;
+                const buttonY = 350;
 
-                const heading = this.add.text(100, 100, 'YarkBorg', { fontFamily: '"Press Start 2P"', fontSize: '75px', fill: '#fff' });
+                const heading = this.add.text(100, 150, 'YarkBorg', { fontFamily: '"Press Start 2P"', fontSize: '65px', fill: '#fff' });
                 const headingWidht = heading.width;
                 heading.setX(buttonX - headingWidht/2);
 

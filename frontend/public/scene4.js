@@ -8,7 +8,7 @@ class Scene4 extends Phaser.Scene {
     }
 
     preload() {
-        this.load.image('wallpaper', 'wallpaper1.jpg');
+        this.load.image('wallpaper', 'wallpaper2.jpg');
         this.load.script('webfont', 'https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js');
 
     }
@@ -21,7 +21,7 @@ class Scene4 extends Phaser.Scene {
             active: () => {
 
                 const buttonWidth = 170;
-                const buttonHeight = 75;
+                const buttonHeight = 50;
                 const middleX = 400;
                 const buttonX = 650;
                 const buttonY = 500;
@@ -33,34 +33,35 @@ class Scene4 extends Phaser.Scene {
                 const head2 = this.add.text(100, 200, 'type here:' , { fontFamily: '"Press Start 2P"', fontSize: '15px', fill: '#fff' });
                 const headWidht2 = head2.width;
                 head2.setX(middleX - headWidht2/2);
-
                 
-                const input = this.add.text(400, 275, '', { fontFamily: 'MItr', fontSize: '24px', fill: '#ffffff' }).setOrigin(0.5);
+                const inputElement = document.createElement('input');
+                inputElement.type = 'text';
+                inputElement.style.position = 'absolute';
+                inputElement.style.transform = 'translate(-50%, -50%)';
+                inputElement.style.padding = '10px';
+                inputElement.style.fontSize = '15px';
+                inputElement.style.borderRadius = '5px';
+                inputElement.style.fontFamily = 'Mitr'
+                inputElement.style.left = `400px`;
+                inputElement.style.top = `300px`;
 
-                
-                this.input.keyboard.on('keydown', function(event) {
-                    const thaiPattern = /^[a-zA-Z0-9\sก-๙]$/; // Allow alphanumeric characters, blank space, and Thai characters
-                    if (thaiPattern.test(event.key)) {
-                        input.text += event.key;
-                    } else if (event.key === 'Backspace' && input.text.length > 0) {
-                        input.text = input.text.slice(0, -1);
-                    }
-                });
-
+                this.game.canvas.parentElement.appendChild(inputElement);
+            
                 this.add.rectangle(buttonX, buttonY, buttonWidth, buttonHeight, 0xffffff)
                 .setInteractive()
                 .on('pointerup', async () => {
                     await deleteItem(id);
                     
                     const payload = {
-                        item : input.text
+                        item : inputElement.value
                     }
                     await createItem(payload);
 
-                    console.log('Send Message : '+input.text)
+                    console.log('Send Message : '+inputElement.value)
                     console.log("Already delete : "+ word +" "+id)
-                    
+
                     this.scene.start('Scene1');
+                    this.game.canvas.parentElement.removeChild(inputElement);
                 });
 
                 const buttonText = this.add.text(buttonX, buttonY, 'Send Message', { fontFamily: '"Press Start 2P"',fill: '#000', fontSize: '12px' });
