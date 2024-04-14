@@ -1,9 +1,18 @@
-import { createItem, deleteItem, getItems, filterItems } from "./api.js";
+import { createItem, deleteItem, filterItem, getItems } from "./api.js";
 
+/** @typedef {import("./config.js").Item} Item */
+/** @typedef {import("./config.js").ItemPayload} ItemPayload */
+
+/**
+ * @param {Item[]} items
+ */
 function drawTable(items) {
+  /** @type {HTMLTableSectionElement} */
   const table = document.getElementById("main-table-body");
 
+  // Clear all elements
   table.innerHTML = "";
+
   for (const item of items) {
     const row = table.insertRow();
     row.insertCell().innerText = item.item;
@@ -11,7 +20,7 @@ function drawTable(items) {
     row.insertCell().innerText = item.price;
 
     const button = document.createElement("button");
-    button.addEventListener("click", () => handleDeleteItem(item._id));
+    button.addEventListener("click", () => handleDelete(item._id));
     button.innerText = "ลบ";
 
     row.insertCell().appendChild(button);
@@ -24,15 +33,22 @@ export async function fetchAndDrawTable() {
   drawTable(items);
 }
 
-export async function handleDeleteItem(id) {
+/**
+ * @param {string} id
+ */
+export async function handleDelete(id) {
   await deleteItem(id);
   await fetchAndDrawTable();
-  clearFilter();
 }
 
 export async function handleCreateItem() {
+  /** @type {HTMLInputElement} */
   const itemToAdd = document.getElementById("item-to-add");
+
+  /** @type {HTMLSelectElement} */
   const nameToAdd = document.getElementById("name-to-add");
+
+  /** @type {HTMLInputElement} */
   const priceToAdd = document.getElementById("price-to-add");
 
   const payload = {
@@ -47,26 +63,11 @@ export async function handleCreateItem() {
   itemToAdd.value = "";
   nameToAdd.value = "0";
   priceToAdd.value = "";
-  clearFilter();
-}
-
-export async function clearFilter() {
-  document.getElementById("filter-name").value = "-- ทั้งหมด --";
-  document.getElementById("lower-price").value = "";
-  document.getElementById("upper-price").value = "";
 }
 
 export async function handleFilterItem() {
   const name = document.getElementById("filter-name").value;
-  let lowerPrice = document.getElementById("lower-price").value;
-  let upperPrice = document.getElementById("upper-price").value;
-  
-  if (lowerPrice === "") lowerPrice = 0;
-  else lowerPrice = parseInt(lowerPrice);
-
-  if (upperPrice === "") upperPrice = 1000000000;
-  else upperPrice = parseInt(upperPrice);
-
-  const items = await filterItems(name, lowerPrice, upperPrice);
-  await drawTable(items);
+  await filterItem(name);
+  await fetchAndDrawTable();
 }
+

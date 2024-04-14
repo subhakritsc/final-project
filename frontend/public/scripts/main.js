@@ -1,4 +1,4 @@
-import { handleCreateMember, populateMembers } from "./member.js";
+import { populateMembers } from "./member.js";
 import { fetchAndDrawTable, handleCreateItem, handleFilterItem } from "./table.js";
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -6,18 +6,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
   populateMembers();
 
-  const addItemButton = document.getElementById("add-newrow");
-  addItemButton.addEventListener("click", () => {
+  /** @type {HTMLButtonElement} */
+  const addButton = document.getElementById("add-newrow");
+  addButton.addEventListener("click", () => {
     handleCreateItem();
   });
 
+  /** @type {HTMLButtonElement} */
   const filterButton = document.getElementById("filter-button");
   filterButton.addEventListener("click", () => {
     handleFilterItem();
-  });
-
-  const addMemberButton = document.getElementById("add-member");
-  addMemberButton.addEventListener("click", () => {
-    handleCreateMember();
   });
 });
