@@ -21,7 +21,7 @@ class Scene1 extends Phaser.Scene {
                 const buttonX = 400;
                 const buttonY = 350;
 
-                const heading = this.add.text(100, 150, 'YarkBorg', { fontFamily: '"Press Start 2P"', fontSize: '65px', fill: '#fff' });
+                const heading = this.add.text(100, 150, 'Tell Me!', { fontFamily: '"Press Start 2P"', fontSize: '65px', fill: '#fff' });
                 const headingWidht = heading.width;
                 heading.setX(buttonX - headingWidht/2);
 

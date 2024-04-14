@@ -24,15 +24,15 @@ class Scene4 extends Phaser.Scene {
                 const buttonHeight = 50;
                 const middleX = 400;
                 const buttonX = 650;
-                const buttonY = 500;
+                const buttonY = 525;
 
-                const head = this.add.text(100, 140, 'what to you want to tell next person' , { fontFamily: '"Press Start 2P"', fontSize: '15px', fill: '#fff' });
+                const head = this.add.text(100, 140, 'what do you want to tell next person' , { fontFamily: '"Press Start 2P"', fontSize: '15px', fill: '#fff' });
                 const headWidht = head.width;
                 head.setX(middleX - headWidht/2);
 
-                const head2 = this.add.text(100, 200, 'type here:' , { fontFamily: '"Press Start 2P"', fontSize: '15px', fill: '#fff' });
-                const headWidht2 = head2.width;
-                head2.setX(middleX - headWidht2/2);
+                const header = this.add.text(100, 220, 'type here : ' , { fontFamily: '"Press Start 2P"', fontSize: '15px', fill: '#000' });
+                const headerWidht = header.width;
+                header.setX(middleX - headerWidht/2);
                 
                 const inputElement = document.createElement('input');
                 inputElement.type = 'text';

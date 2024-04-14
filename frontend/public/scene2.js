@@ -22,8 +22,8 @@ class Scene2 extends Phaser.Scene {
                 const buttonHeight = 50;
                 const middleX = 400;
                 const buttonX = 650;
-                const buttonY = 500;
-
+                const buttonY = 525;
+6
                 this.add.rectangle(buttonX, buttonY, buttonWidth, buttonHeight, 0xffffff)
                 .setInteractive()
                 .on('pointerup', () => {
@@ -32,13 +32,13 @@ class Scene2 extends Phaser.Scene {
                     console.log('Back to Main Menu clicked!');
                 });
 
-                const buttonText = this.add.text(buttonX, buttonY, 'Back to Main Menu', { fontFamily: '"Press Start 2P"',fill: '#000', fontSize: '8px' });
+                const buttonText = this.add.text(buttonX, buttonY, 'Back', { fontFamily: '"Press Start 2P"',fill: '#000', fontSize: '11px' });
                 const textWidth = buttonText.width;
                 const textHeight = buttonText.height;
                 buttonText.setX(buttonX - textWidth / 2);
                 buttonText.setY(buttonY - textHeight / 2);
         
-                const heading = this.add.text(100, 100, 'Choose the card', { fontFamily: '"Press Start 2P"', fontSize: '40px', fill: '#fff' });
+                const heading = this.add.text(100, 100, 'Choose a card !', { fontFamily: '"Press Start 2P"', fontSize: '35px', fill: '#fff' });
                 const headingWidht = heading.width;
                 heading.setX(middleX - headingWidht/2);
 

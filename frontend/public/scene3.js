@@ -38,13 +38,13 @@ class Scene3 extends Phaser.Scene {
                 const buttonHeight = 50;
                 const middleX = 400;
                 const buttonX = 650;
-                const buttonY = 500;
+                const buttonY = 525;
 
-                const head = this.add.text(100, 140, 'the word is' , { fontFamily: '"Press Start 2P"', fontSize: '45px', fill: '#fff' });
+                const head = this.add.text(100, 170, 'prevoius person want to tell you that' , { fontFamily: '"Press Start 2P"', fontSize: '15px', fill: '#000' });
                 const headWidht = head.width;
                 head.setX(middleX - headWidht/2);
 
-                const heading = this.add.text(100, 250, '" '+word+' "' , { fontFamily: 'Mitr' , fontSize: '30px', fill: '#fff' });
+                const heading = this.add.text(100, 250, '" '+word+' "' , { fontFamily: 'Mitr' , fontSize: '50px', fill: '#fff' });
                 const headingWidht = heading.width;
                 heading.setX(middleX - headingWidht/2);
 
@@ -56,7 +56,7 @@ class Scene3 extends Phaser.Scene {
                     console.log('Continue clicked!');
                 });
 
-                const buttonText = this.add.text(buttonX, buttonY, 'Continue', { fontFamily: '"Press Start 2P"',fill: '#000', fontSize: '8px' });
+                const buttonText = this.add.text(buttonX, buttonY, 'Continue', { fontFamily: '"Press Start 2P"',fill: '#000', fontSize: '11px' });
                 const textWidth = buttonText.width;
                 const textHeight = buttonText.height;
                 buttonText.setX(buttonX - textWidth / 2);
