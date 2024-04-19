@@ -12,15 +12,18 @@ class Scene3 extends Phaser.Scene {
     preload() {
         this.load.image('wallpaper', 'wallpaper2.jpg');
         this.load.script('webfont', 'https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js');
-
+        this.load.audio('excited','excited.mp3');
     }
 
     create() {
+        const excitedSound = this.sound.add('excited');
+        excitedSound.play();
         WebFont.load({
             google: {
                 families: ["Press Start 2P",'Mitr']
             },
             active: async () => {
+                const catWalk = this.add.image(490,420,'cat').setScale(0.3);
                 const self = this;
                 console.log("getting items!!!!")
                 items = await getItems()
@@ -116,9 +119,9 @@ class Scene3 extends Phaser.Scene {
         img.onload = () => {
             const middleX = 400;
             const middleY = 300;
-    
+            
             const texture = this.textures.addImage('drawing_' + Date.now(), img);
-    
+            
             const drawingSprite = this.add.sprite(middleX, middleY, texture.key);
             drawingSprite.setName('drawing');
     

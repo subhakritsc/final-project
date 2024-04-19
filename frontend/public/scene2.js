@@ -8,9 +8,14 @@ class Scene2 extends Phaser.Scene {
         this.load.image('card','card.png')
         this.load.image('card2','card2.png')
         this.load.script('webfont', 'https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js');
+        this.load.audio('music','music.mp3');
+        this.load.image('cat','cat.png');
     }
 
     create() {
+        const bgmusic = this.sound.add('music');
+        bgmusic.loop = true;
+        bgmusic.play();
         WebFont.load({
             google: {
                 families: ["Press Start 2P"]
@@ -23,12 +28,14 @@ class Scene2 extends Phaser.Scene {
                 const middleX = 400;
                 const buttonX = 650;
                 const buttonY = 525;
-6
+
+                const catWalk = this.add.image(280,420,'cat').setScale(0.3);
+
                 this.add.rectangle(buttonX, buttonY, buttonWidth, buttonHeight, 0xffffff)
                 .setInteractive()
                 .on('pointerup', () => {
+                    bgmusic.stop();
                     self.scene.start('Scene1');
-                    
                     console.log('Back to Main Menu clicked!');
                 });
 
@@ -45,6 +52,7 @@ class Scene2 extends Phaser.Scene {
                 const card1 = this.add.image(175,300,'card').setScale(0.3)
                 .setInteractive()
                 .on('pointerup', () => {
+                    bgmusic.stop();
                     console.log('Card1 clicked!')
                     self.scene.start('Scene3')
                 });
@@ -52,6 +60,7 @@ class Scene2 extends Phaser.Scene {
                 const card2 = this.add.image(325,300,'card2').setScale(0.3)
                 .setInteractive()
                 .on('pointerup', () => {
+                    bgmusic.stop();
                     console.log('Card2 clicked!')
                     self.scene.start('Scene3')
                 });
@@ -59,6 +68,7 @@ class Scene2 extends Phaser.Scene {
                 const card3 = this.add.image(475,300,'card').setScale(0.3)
                 .setInteractive()
                 .on('pointerup', () => {
+                    bgmusic.stop();
                     console.log('Card3 clicked!')
                     self.scene.start('Scene3')
                 });
@@ -66,6 +76,7 @@ class Scene2 extends Phaser.Scene {
                 const card4 = this.add.image(625,300,'card2').setScale(0.3)
                 .setInteractive()
                 .on('pointerup', () => {
+                    bgmusic.stop();
                     console.log('Card4 clicked!')
                     self.scene.start('Scene3')
                 });

@@ -6,6 +6,7 @@ class Scene1 extends Phaser.Scene {
     preload() {
         this.load.image('wallpaper', 'wallpaper2.jpg');
         this.load.script('webfont', 'https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js');
+        this.load.image('cat','cat.png');
     }
 
     create() {
@@ -21,17 +22,21 @@ class Scene1 extends Phaser.Scene {
                 const buttonX = 400;
                 const buttonY = 350;
 
+                
+                const catWalk = this.add.image(70,420,'cat').setScale(0.3)
                 const heading = this.add.text(100, 150, 'Tell Me!', { fontFamily: '"Press Start 2P"', fontSize: '65px', fill: '#fff' });
                 const headingWidht = heading.width;
                 heading.setX(buttonX - headingWidht/2);
 
-
+                
                 const startButton = this.add.rectangle(buttonX, buttonY, buttonWidth, buttonHeight, 0xffffff)
                 .setInteractive()
                 .on('pointerup', async () => {
                     self.scene.start('Scene2');                    
                     console.log('Start Game clicked!');
                 });
+
+
 
                 const buttonText = this.add.text(buttonX, buttonY, 'Start Game', { fontFamily: '"Press Start 2P"',fill: '#000', fontSize: '15px' });
                 const textWidth = buttonText.width;
