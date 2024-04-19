@@ -37,7 +37,7 @@ class DrawScene extends Phaser.Scene {
                 canvas.height = 300;
                 canvas.style.position = 'absolute';
                 canvas.style.left = '400px';
-                canvas.style.top = '40%';
+                canvas.style.top = '300px';
                 canvas.style.transform = 'translate(-50%, -50%)';
                 canvas.style.border = '2px solid #ffffff';
                 document.body.appendChild(canvas);
@@ -79,7 +79,7 @@ class DrawScene extends Phaser.Scene {
                 const colorButtons = [];
 
                 colors.forEach((color, index) => {
-                    const colorButton = self.add.rectangle(buttonX - 30, (buttonY - 25) + index * (canvas.height / colors.length + 1), buttonWidth, canvas.height / colors.length - 20, parseInt(color.replace('#', '0x'), 16))
+                    const colorButton = self.add.rectangle(buttonX - 30, (buttonY - 5) + index * (canvas.height / colors.length + 1), buttonWidth, canvas.height / colors.length - 20, parseInt(color.replace('#', '0x'), 16))
                         .setInteractive()
                         .on('pointerup', () => {
                             strokeColor = color;
