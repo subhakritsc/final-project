@@ -68,7 +68,7 @@ class Scene3 extends Phaser.Scene {
                     console.log('Continue clicked!');
                 });
 
-                const buttonText = this.add.text(middleX + distanceX, buttonY, 'Pass message', { fontFamily: '"Press Start 2P"',fill: '#000', fontSize: '11px' });
+                const buttonText = this.add.text(middleX + distanceX, buttonY, 'Send message', { fontFamily: '"Press Start 2P"',fill: '#000', fontSize: '11px' });
                 const textWidth = buttonText.width;
                 const textHeight = buttonText.height;
                 buttonText.setX(middleX + distanceX - textWidth / 2);
@@ -82,7 +82,7 @@ class Scene3 extends Phaser.Scene {
                     console.log('Continue clicked!');
                 });
 
-                const buttonText2 = this.add.text(middleX - distanceX, buttonY, 'Pass drawing', { fontFamily: '"Press Start 2P"',fill: '#000', fontSize: '11px' });
+                const buttonText2 = this.add.text(middleX - distanceX, buttonY, 'Send drawing', { fontFamily: '"Press Start 2P"',fill: '#000', fontSize: '11px' });
                 const textWidth2 = buttonText2.width;
                 const textHeight2 = buttonText2.height;
                 buttonText2.setX(middleX - distanceX - textWidth2 / 2);
