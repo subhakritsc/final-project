@@ -1,39 +1,56 @@
-const itemSchema = {
-  item: "string",
-};
+import mongoose from "mongoose";
 
-class Item {
-  /**
-   * @param {string} item
-   * @param {number} _id
-   * @param {string} type
-   */
-  constructor(item,type) {
-    this.item = item;
-    this._id = Math.floor(Math.random() * 100000);
-    this.type = type;
-  }
-}
+const itemSchema = new mongoose.Schema({
+  item: {
+    type: String,
+    required: true,
+  },
+  type: {
+    type: String,
+    required: true,
+  },
+});
 
-/**
- * @param {object} obj
- * @returns Item  
- */
+const Item = mongoose.model("Item", itemSchema);
 
-function itemFromObject(obj) {
-  const errors = [];
-  if (!("item" in obj)) {
-    errors.push("Expected key 'item'");
-  } else if (typeof obj.item !== "string") {
-    errors.push("Expected value of 'item' to be a string");
-  }
+export default Item;
 
-  if (errors.length > 0) {
-    throw new Error(errors.join("\n"));
-  }
+// const itemSchema = {
+//   item: "string",
+// };
 
-  return new Item(obj.item, obj.type);
-}
+// class Item {
+//   /**
+//    * @param {string} item
+//    * @param {number} _id
+//    * @param {string} type
+//    */
+//   constructor(item,type) {
+//     this.item = item;
+//     this._id = Math.floor(Math.random() * 100000);
+//     this.type = type;
+//   }
+// }
+
+// /**
+//  * @param {object} obj
+//  * @returns Item  
+//  */
+
+// function itemFromObject(obj) {
+//   const errors = [];
+//   if (!("item" in obj)) {
+//     errors.push("Expected key 'item'");
+//   } else if (typeof obj.item !== "string") {
+//     errors.push("Expected value of 'item' to be a string");
+//   }
+
+//   if (errors.length > 0) {
+//     throw new Error(errors.join("\n"));
+//   }
+
+//   return new Item(obj.item, obj.type);
+// }
 
 
-export { Item, itemFromObject };
+// export { Item, itemFromObject };
