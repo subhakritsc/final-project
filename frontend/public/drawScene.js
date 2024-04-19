@@ -53,6 +53,10 @@ class DrawScene extends Phaser.Scene {
                 canvas.addEventListener('mouseup', endDrawing);
                 canvas.addEventListener('mouseout', endDrawing);
 
+                canvas.addEventListener('pointerdown', startDrawing);
+                canvas.addEventListener('pointermove', draw);
+                canvas.addEventListener('pointerup', endDrawing);
+
                 function startDrawing(e) {
                     isDrawing = true;
                     [lastX, lastY] = [e.offsetX, e.offsetY];
