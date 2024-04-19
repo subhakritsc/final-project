@@ -25,7 +25,7 @@ class Scene1 extends Phaser.Scene {
                 const headingWidht = heading.width;
                 heading.setX(buttonX - headingWidht/2);
 
-        
+
                 const startButton = this.add.rectangle(buttonX, buttonY, buttonWidth, buttonHeight, 0xffffff)
                 .setInteractive()
                 .on('pointerup', async () => {
@@ -47,6 +47,27 @@ class Scene1 extends Phaser.Scene {
         });
 
         this.add.image(0,0,'wallpaper').setOrigin(0,0);
+    }
+
+    showNotification(message) {
+        const style = {
+            fontFamily: '"Press Start 2P"',
+            fontSize: '16px',
+            fill: '#000000',
+            backgroundColor: '#ffffff',
+            padding: { x: 10, y: 5 }
+        };
+    
+        this.notificationText = this.add.text(
+            this.sys.game.config.width - 20,
+            20,
+            message,
+            style
+        ).setOrigin(1, 0).setDepth(1);
+    
+        this.time.delayedCall(2500, () => {
+            this.notificationText.destroy();
+        });
     }
 }
 

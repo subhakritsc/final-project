@@ -6,10 +6,12 @@ class Item {
   /**
    * @param {string} item
    * @param {number} _id
+   * @param {string} type
    */
-  constructor(item) {
+  constructor(item,type) {
     this.item = item;
     this._id = Math.floor(Math.random() * 100000);
+    this.type = type;
   }
 }
 
@@ -30,7 +32,7 @@ function itemFromObject(obj) {
     throw new Error(errors.join("\n"));
   }
 
-  return new Item(obj.item);
+  return new Item(obj.item, obj.type);
 }
 
 

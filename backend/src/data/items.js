@@ -2,6 +2,7 @@
 export const items = [
     {
         "item": "hello",
-        "_id": 1
+        "_id": 1,
+        "type": "Text"
     }
 ];

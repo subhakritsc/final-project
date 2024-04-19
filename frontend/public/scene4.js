@@ -53,13 +53,15 @@ class Scene4 extends Phaser.Scene {
                     await deleteItem(id);
                     
                     const payload = {
-                        item : inputElement.value
+                        item : inputElement.value,
+                        type : "Text"
                     }
                     await createItem(payload);
 
                     console.log('Send Message : '+inputElement.value)
                     console.log("Already delete : "+ word +" "+id)
 
+                    this.scene.get('Scene1').showNotification("Your message has been sent!");
                     this.scene.start('Scene1');
                     this.game.canvas.parentElement.removeChild(inputElement);
                 });

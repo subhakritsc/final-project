@@ -5,8 +5,9 @@ import { Console } from "console";
 /** @type {import("express").RequestHandler} */
 export const createItem = async (req, res) => {
   try {
-    const item = itemFromObject(req.body);
-    items.push(item);
+    const { type, item } = req.body;
+    const newitem = itemFromObject({ item, type });
+    items.push(newitem);
     res.status(200).json({ message: "OK" });
   } catch (e) {
     console.error(e);
