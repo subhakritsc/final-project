@@ -33,13 +33,15 @@ class DrawScene extends Phaser.Scene {
                 head.setX(middleX - headWidth / 2);
 
                 const canvas = document.createElement('canvas');
-                canvas.width = 500;
+                canvas.width = 400;
                 canvas.height = 300;
                 canvas.style.position = 'absolute';
                 canvas.style.left = '400px';
                 canvas.style.top = '300px';
                 canvas.style.transform = 'translate(-50%, -50%)';
-                canvas.style.border = '2px solid #ffffff';
+                canvas.style.border = '2px solid #000000';
+                canvas.style.backgroundColor = '#ffffff';
+                canvas.style.borderRadius = '20px'
                 document.body.appendChild(canvas);
 
                 const ctx = canvas.getContext('2d');
