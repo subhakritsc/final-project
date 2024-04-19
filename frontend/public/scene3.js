@@ -22,8 +22,9 @@ class Scene3 extends Phaser.Scene {
             },
             active: async () => {
                 const self = this;
-
+                console.log("getting items!!!!")
                 items = await getItems()
+                console.log("get items is finished. These are list of items!!")
                 console.log(items)
         
                 let randomIndex = Math.floor(Math.random() * items.length);

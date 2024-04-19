@@ -6,6 +6,7 @@ import { BACKEND_URL } from "./config.js";
 export async function getItems() {
   /** @type {Item[]} */
   const items = await fetch(`${BACKEND_URL}/items`).then((r) => r.json());
+  // console.log(items);
   return items;
 }
 

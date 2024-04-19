@@ -7,13 +7,10 @@ import Item from "../models/itemModel.js";
 /** @type {import("express").RequestHandler} */
 export const createItem = async (req, res) => {
   try {
-    const newItem = new Item({item:"Hi",type:"Text"});
+    const newItem = new Item(req.body);
     await newItem.save();
+
     res.status(200).json({ message: "OK" });
-    // const { type, item } = req.body;
-    // const newitem = itemFromObject({ item, type });
-    // items.push(newitem);
-    // res.status(200).json({ message: "OK" });
   } catch (err) {
     if (err.name === "ValidationError") {
       res.status(400).json({ error: "Bad Request" });
@@ -21,6 +18,21 @@ export const createItem = async (req, res) => {
       res.status(500).json({ error: "Internal server error." });
     }
   }
+  // try {
+  //   // const newItem = new Item({item:"Hi",type:"Text"});
+  //   // await newItem.save();
+  //   // res.status(200).json({ message: "OK" });
+  //   const { type, item } = req.body;
+  //   const newitem = itemFromObject({ item, type });
+  //   items.push(newitem);
+  //   res.status(200).json({ message: "OK" });
+  // } catch (err) {
+  //   if (err.name === "ValidationError") {
+  //     res.status(400).json({ error: "Bad Request" });
+  //   } else {
+  //     res.status(500).json({ error: "Internal server error." });
+  //   }
+  // }
 };
 
 /** @type {import("express").RequestHandler} */
