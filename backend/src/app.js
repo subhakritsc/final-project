@@ -1,5 +1,6 @@
 import express from "express";
 import cors from "cors";
+import './config/db.js';
 
 import ItemRoute from "./routes/itemRoute.js";
 
