@@ -7,7 +7,7 @@ import Item from "../models/itemModel.js";
 /** @type {import("express").RequestHandler} */
 export const createItem = async (req, res) => {
   try {
-    const newItem = new Item(req.body);
+    const newItem = new Item({item:"Hi",type:"Text"});
     await newItem.save();
     res.status(200).json({ message: "OK" });
     // const { type, item } = req.body;
@@ -27,14 +27,7 @@ export const createItem = async (req, res) => {
 export const getItems = async (req, res) => {
   // res.status(200).json(items.filter((obj) => (filter == "ทั้งหมด" || obj.name == filter)));
   // res.status(200).json(items);
-  const newItem = new Item({
-    item: 'First Item',
-    type: 'Some Type',
-  });
-  
-  // Save the new item to the collection
-  newItem.save();
-  const items = await Item.find();
+  const items = await Item.find({});
   console.log(items);
   res.status(200).json(items);
 
